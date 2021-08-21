@@ -14,6 +14,17 @@ const ExtraDeliveryCost = document.getElementById('delivery-cost');
 // total price
 const bestPrice = document.getElementById('best-price');
 const totalPrice = document.getElementById('total-price')
+
+function updateTotal() {
+  const memoryCOst = parseInt(ExtraMemoryCost.innerText)
+  const storageCost = parseInt(ExtraStorageCost.innerText)
+  const deliveryCost = parseInt(ExtraDeliveryCost.innerText);
+  const total = parseInt(bestPrice.innerText);
+  const grandTotal = memoryCOst + storageCost + deliveryCost + total;
+  totalPrice.innerText = grandTotal;
+  promoTotal.innerText = totalPrice.innerText;
+}
+
 // Memory cost
 Memory8GB.addEventListener('click', function () {
   ExtraMemoryCost.innerText = "0"
@@ -48,12 +59,30 @@ paidDelivery.addEventListener('click', function () {
   updateTotal()
 });
 
-function updateTotal() {
-  const memoryCOst = parseInt(ExtraMemoryCost.innerText)
-  const storageCost = parseInt(ExtraStorageCost.innerText)
-  const deliveryCost = parseInt(ExtraDeliveryCost.innerText);
-  const total = parseInt(bestPrice.innerText);
-  console.log(ExtraDeliveryCost.innerText, bestPrice.innerText)
-  const grandTotal = memoryCOst + storageCost + deliveryCost + total;
-  totalPrice.innerText = grandTotal;
+
+// promo section 
+
+const promoInputField = document.getElementById('promo-input');
+const promoButton = document.getElementById('promo-btn');
+const promoTotal = document.getElementById('promo-total');
+
+// promo button
+
+promoButton.addEventListener('click', function () {
+  addPromoCode()
+
+});
+
+function addPromoCode() {
+  debugger;
+  const promo = promoInputField.value;
+  if (promo == 'stevekaku') {
+    const promoTotalPrice = promoTotal.innerText
+    const tax = parseInt(promoTotalPrice) / 100 * 20;
+    promoTotal.innerText = promoTotalPrice - tax;
+  }
+  else {
+    alert('plz enter valid promo code')
+  }
+  promoInputField.value = "";
 }
