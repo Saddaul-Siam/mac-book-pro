@@ -66,23 +66,23 @@ const promoInputField = document.getElementById('promo-input');
 const promoButton = document.getElementById('promo-btn');
 const promoTotal = document.getElementById('promo-total');
 
+function addPromoCode() {
+  debugger;
+  const promo = promoInputField.value;
+  if (promo == 'stevekaku') {
+    const promoTotalPrice = totalPrice.innerText
+    const tax = parseInt(promoTotalPrice) / 100 * 20;
+    promoTotal.innerText = promoTotalPrice - tax;
+  }
+  else {
+    alert('plz enter valid promo code ')
+  }
+  promoInputField.value = "";
+}
+
 // promo button
 
 promoButton.addEventListener('click', function () {
   addPromoCode()
 
 });
-
-function addPromoCode() {
-  debugger;
-  const promo = promoInputField.value;
-  if (promo == 'stevekaku') {
-    const promoTotalPrice = promoTotal.innerText
-    const tax = parseInt(promoTotalPrice) / 100 * 20;
-    promoTotal.innerText = promoTotalPrice - tax;
-  }
-  else {
-    alert('plz enter valid promo code')
-  }
-  promoInputField.value = "";
-}
