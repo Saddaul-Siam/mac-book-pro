@@ -71,7 +71,7 @@ function addPromoCode() {
   const promo = promoInputField.value;
   if (promo == 'stevekaku') {
     const promoTotalPrice = totalPrice.innerText
-    const tax = parseInt(promoTotalPrice) / 100 * 20;
+    const tax = parseFloat(promoTotalPrice) / 100 * 20;
     promoTotal.innerText = promoTotalPrice - tax;
   }
   else {
@@ -84,5 +84,4 @@ function addPromoCode() {
 
 promoButton.addEventListener('click', function () {
   addPromoCode()
-
 });
